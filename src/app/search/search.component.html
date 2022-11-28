@@ -1,0 +1,38 @@
+<div class= main><div class="container">
+  <strong> Stock Tracking Application  </strong>
+    <div class="row height d-flex justify-content-center align-items-center">
+      <div class="col-md-8"><br>
+        <div class="search">
+          <input id="stockInput" type="text" name="stockInput"[(ngModel)]="stockInput" 
+          class="form-control" placeholder=Ex:AAPL,TSLA,GOOGL><br><br>
+          <button id="trackBtn"(click)="mainevent();"type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class=output>
+<div class="container1">
+  <div *ngFor="let item of value2 let i = index">
+    <div class=close>
+    <h1><img id="closeicon{{item.displaySymbol}} 
+      "src="assets/cross.png" float=left width="50" height="50" (click)="close(item,i)"></h1></div>
+    <h2>{{item.description}}({{item.displaySymbol}})</h2>          
+<h5>Change today:</h5>
+{{item.c}}%
+<h5>Opening Price:</h5>
+{{item.o }}
+<h5>Current Price:</h5>
+{{item.dp }}
+<h5>High Price:</h5>
+{{item.h }}
+<br>
+<img *ngIf="item.dp >0" src="assets/increase.jpg" width="200" height="200" >
+<img *ngIf="item.dp<0" src="assets/decrease.png" width="200" height="200">
+<br>
+<a class="insider" [routerLink]="'/search/'+item.displaySymbol">View Analysis Report</a>
+<br>
+</div>
+</div>
+</div>
+</div>
+
